@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: transparent;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            background: transparent;
+        }
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 120px;
+            color: #0f172a; /* Corresponds to var(--text) */
+            letter-spacing: 4px;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        .logo-dot {
+            width: 28px;
+            height: 28px;
+            background: #0891b2; /* Corresponds to var(--primary) */
+            border-radius: 50%;
+            margin-left: 15px;
+            box-shadow: 0 0 25px rgba(8, 145, 178, 0.6);
+            /* This is the key: centering it relative to the text cap-height */
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container" id="logo">
+        <h1 class="logo-text">HOMI<span class="logo-dot"></span></h1>
+    </div>
+</body>
+</html>

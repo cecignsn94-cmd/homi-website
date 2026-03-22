@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import Testimonials from '../components/Testimonials.astro';
+import About from '../components/About.astro';
+
+// Welcome to Astro! Gratitude for choosing us.
+---
+
+<Layout title="Homi | Lavado de Coches a Domicilio">
+	<Navbar />
+	<main>
+		<Hero />
+		<section id="servicios" class="features container">
+			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+				<h3>Lavado Exterior</h3>
+				<p>Limpieza detallada, lavado de rines y neumáticos, con secado de microfibra para un acabado sin manchas.</p>
+			</a>
+			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+				<h3>Lavado Completo</h3>
+				<p>Lavado exterior, aspirado profundo e hidratación de plásticos para un acabado impecable.</p>
+			</a>
+			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Servicio%20Premium" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+				<h3>Servicio Premium</h3>
+				<p>Desmanchado de cristales, limpieza de faros, hidratación de plásticos y acabado con cera protectora para un brillo duradero.</p>
+			</a>
+			<div class="glass-card club-card">
+				<div class="club-content">
+					<div class="club-badge">Membresía</div>
+					<h3>Homi Club</h3>
+					<p>Únete a nuestro club exclusivo y mantén tu coche siempre impecable con lavados programados cada semana y beneficios especiales cada mes.</p>
+					<a href="/club" class="btn btn-primary">Saber más del Club</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="como-funciona" class="work container">
+			<h2 class="section-title">¿Cómo funciona?</h2>
+			<div class="work-grid">
+				<div class="work-item glass-card">
+					<!-- Reusing the image for now, but labeling it as a result -->
+					<div class="work-info">
+						<h4>1. Agenda en línea</h4>
+						<p>Elige el día y la hora que mejor te convenga.</p>
+					</div>
+				</div>
+				<div class="work-item glass-card">
+					<div class="work-info">
+						<h4>2. Llegamos a ti</h4>
+						<p>Nuestro equipo llega totalmente equipado a tu ubicación.</p>
+					</div>
+				</div>
+				<div class="work-item glass-card">
+					<div class="work-info">
+						<h4>3. Disfruta el resultado</h4>
+						<p>Tu coche impecable sin que tengas que moverlo de lugar.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<Testimonials />
+		<About />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+	}
+
+	.section-title {
+		font-size: clamp(2rem, 8vw, 2.5rem);
+		margin-bottom: clamp(2rem, 5vw, 3rem);
+		text-align: center;
+		padding: 0 1rem;
+	}
+
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+		padding: 2rem 1.5rem;
+	}
+
+	.work {
+		padding: 4rem 1.5rem 6rem;
+	}
+
+	.work-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.work-item {
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.work-info {
+		padding: 1.5rem;
+	}
+
+	.work-info h4 {
+		font-size: 1.25rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.work-info p {
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.features h3 {
+		margin-bottom: 0.75rem;
+		font-size: 1.4rem;
+		color: var(--text);
+	}
+
+	.features p {
+		color: var(--text-muted);
+		line-height: 1.6;
+		font-size: 0.95rem;
+	}
+
+	.service-link {
+		text-decoration: none;
+		display: block;
+		cursor: pointer;
+	}
+
+	.club-card {
+		grid-column: 1 / -1;
+		background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(255, 255, 255, 0.7) 100%);
+		border: 1px solid rgba(8, 145, 178, 0.2);
+		margin-top: 1rem;
+		padding: 3rem 2rem;
+	}
+
+	.club-content {
+		text-align: center;
+		padding: 0;
+	}
+
+	.club-badge {
+		display: inline-block;
+		padding: 0.25rem 1rem;
+		background: var(--primary);
+		color: white;
+		border-radius: 99px;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 1.25rem;
+	}
+
+	.club-card h3 {
+		font-size: clamp(2rem, 6vw, 2.5rem);
+		margin-bottom: 1rem;
+	}
+
+	.club-card p {
+		max-width: 600px;
+		margin: 0 auto 2rem;
+		font-size: 1.1rem;
+		color: var(--text-muted);
+	}
+
+	@media (max-width: 640px) {
+		.features {
+			grid-template-columns: 1fr;
+			padding: 1rem;
+		}
+		.work {
+			padding: 3rem 1rem;
+		}
+		.club-card {
+			padding: 2.5rem 1.5rem;
+		}
+	}
+</style>

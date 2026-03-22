@@ -1,0 +1,249 @@
+---
+---
+<!-- Mobile Menu Drawer (Movido fuera para evitar conflictos) -->
+<div id="mobile-menu" class="mobile-menu-global">
+  <div id="mobile-overlay" class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-content">
+    <div class="mobile-header">
+      <a href="/" class="logo">
+        <span class="logo-text">HOMI</span>
+        <span class="logo-dot"></span>
+      </a>
+      <button id="close-btn" class="close-btn" aria-label="Cerrar">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="/" class="mobile-link">Inicio</a></li>
+      <li><a href="/club" class="mobile-link">Homi Club</a></li>
+      <li class="mobile-cta-wrapper">
+        <a href="https://wa.me/523331992043?text=Hola,%20me%20interesa%20reservar" target="_blank" class="btn btn-primary mobile-cta">Reservar ahora</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<nav class="navbar">
+  <div class="container nav-content">
+    <a href="/" class="logo">
+      <span class="logo-text">HOMI</span>
+      <span class="logo-dot"></span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <ul class="nav-links desktop-nav">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/club">Homi Club</a></li>
+    </ul>
+
+    <div class="nav-actions desktop-nav">
+      <a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20un%20servicio%20de%20lavado" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reservar ahora</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="menu-btn" aria-label="Abrir menú">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  </div>
+</nav>
+
+<script is:inline>
+  function initializeMenu() {
+    const btn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
+    const body = document.body;
+
+    if (!btn || !menu) return;
+
+    function open() {
+      menu.classList.add('active');
+      body.style.overflow = 'hidden';
+      btn.classList.add('active');
+    }
+
+    function close() {
+      menu.classList.remove('active');
+      body.style.overflow = '';
+      btn.classList.remove('active');
+    }
+
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      menu.classList.contains('active') ? close() : open();
+    };
+
+    if (closeBtn) closeBtn.onclick = close;
+    if (overlay) overlay.onclick = close;
+
+    const links = document.querySelectorAll('.mobile-link');
+    links.forEach(l => l.onclick = close);
+  }
+
+  // Ejecutar
+  initializeMenu();
+  document.addEventListener('astro:after-swap', initializeMenu);
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+  }
+
+  .nav-links a {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* Hamburguesa Button */
+  .menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    width: 24px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger span {
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  /* Global Drawer Styles */
+  .mobile-menu-global {
+    position: fixed;
+    inset: 0;
+    z-index: 5000; /* Prioridad máxima */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu-global.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .mobile-menu-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%;
+    max-width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.2);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .mobile-menu-global.active .mobile-menu-content {
+    transform: translateX(0);
+  }
+
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mobile-link {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .mobile-cta-wrapper {
+    margin-top: 2rem;
+  }
+
+  .mobile-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 968px) {
+    .desktop-nav { display: none; }
+    .menu-btn { display: block; }
+  }
+</style>
