@@ -4,17 +4,20 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import '../styles/global.css';
-import WhatsappButton from '../components/WhatsappButton.astro';
+import "../styles/global.css";
+import WhatsappButton from "../components/WhatsappButton.astro";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Homi - Lavado de coches premium a domicilio. Cuidamos tu coche en la puerta de tu casa." />
+		<meta
+			name="description"
+			content="Homi - Lavado de coches premium a domicilio. Cuidamos tu coche en la puerta de tu casa."
+		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -22,19 +25,18 @@ import WhatsappButton from '../components/WhatsappButton.astro';
 		<div class="bg-gradient"></div>
 		<slot />
 		<WhatsappButton />
+		<style is:global>
+			:root {
+				--accent: 136, 58, 234;
+				--accent-light: 224, 204, 250;
+				--accent-dark: 49, 10, 101;
+				--accent-gradient: linear-gradient(
+					45deg,
+					rgb(var(--accent)),
+					rgb(var(--accent-light)) 30%,
+					white 60%
+				);
+			}
+		</style>
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-</style>
