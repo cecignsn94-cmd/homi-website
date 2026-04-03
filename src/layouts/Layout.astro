@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 import "../styles/global.css";
 import WhatsappButton from "../components/WhatsappButton.astro";
+import Bubbles from "../components/Bubbles.astro";
 ---
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@ import WhatsappButton from "../components/WhatsappButton.astro";
 	</head>
 	<body>
 		<div class="bg-gradient"></div>
+		<Bubbles />
 		<slot />
 		<WhatsappButton />
 		<style is:global>
