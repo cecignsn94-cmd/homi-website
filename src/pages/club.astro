@@ -34,10 +34,10 @@ const plans = [
   {
     name: "Homi Basic",
     prices: [
-      { label: "Ch", amount: "$120", emoji: "🚗" },
-      { label: "Med", amount: "$150", emoji: "🚙" },
-      { label: "Gde", amount: "$190", emoji: "🛻" },
-      { label: "ExtGde", amount: "$220", emoji: "🚐" },
+      { label: "Ch", amount: "$480", emoji: "🚗" },
+      { label: "Med", amount: "$600", emoji: "🚙" },
+      { label: "Gde", amount: "$760", emoji: "🛻" },
+      { label: "ExtGde", amount: "$880", emoji: "🚐" },
     ],
     period: "/mes",
     description: "Ideal para mantener el exterior impecable.",
@@ -51,10 +51,10 @@ const plans = [
   {
     name: "Homi Pro",
     prices: [
-      { label: "Ch", amount: "$160", emoji: "🚗" },
-      { label: "Med", amount: "$210", emoji: "🚙" },
-      { label: "Gde", amount: "$250", emoji: "🛻" },
-      { label: "ExtGde", amount: "$300", emoji: "🚐" },
+      { label: "Ch", amount: "$640", emoji: "🚗" },
+      { label: "Med", amount: "$800", emoji: "🚙" },
+      { label: "Gde", amount: "$930", emoji: "🛻" },
+      { label: "ExtGde", amount: "$1,100", emoji: "🚐" },
     ],
     period: "/mes",
     description: "Nuestro plan más balanceado y popular.",
@@ -69,10 +69,10 @@ const plans = [
   {
     name: "Homi Mixto",
     prices: [
-      { label: "Ch", amount: "$140", emoji: "🚗" },
-      { label: "Med", amount: "$180", emoji: "🚙" },
-      { label: "Gde", amount: "$220", emoji: "🛻" },
-      { label: "ExtGde", amount: "$260", emoji: "🚐" },
+      { label: "Ch", amount: "$560", emoji: "🚗" },
+      { label: "Med", amount: "$700", emoji: "🚙" },
+      { label: "Gde", amount: "$840", emoji: "🛻" },
+      { label: "ExtGde", amount: "$950", emoji: "🚐" },
     ],
     period: "/mes",
     description: "La combinación perfecta entre mantenimiento y limpieza profunda.",
@@ -131,13 +131,13 @@ const plans = [
                 <h3>{plan.name}</h3>
                 <div class="prices-container">
                   {plan.prices.map((p) => (
-                    <div class="price-row">
+                    <a href={`https://wa.me/523319118971?text=${encodeURIComponent(`Me interesa suscribirme al plan ${plan.name} para un auto ${p.label} (${p.amount})`)}`} target="_blank" rel="noopener noreferrer" class="price-row">
                       <span class="price-emoji">{p.emoji} {p.label}</span>
                       <div class="price-value-container">
                         <span class="price-amount">{p.amount}</span>
                         <span class="price-period">{plan.period}</span>
                       </div>
-                    </div>
+                    </a>
                   ))}
                 </div>
                 <p>{plan.description}</p>
@@ -357,6 +357,15 @@ const plans = [
     border-radius: 12px;
     padding: 0.5rem 0.5rem;
     gap: 0.25rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .price-row:hover {
+    background: rgba(8, 145, 178, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(8, 145, 178, 0.1);
   }
 
   .price-value-container {
