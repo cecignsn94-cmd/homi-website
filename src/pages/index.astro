@@ -14,18 +14,33 @@ import About from '../components/About.astro';
 	<main>
 		<Hero />
 		<section id="servicios" class="features container">
-			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+			<div class="glass-card service-card">
 				<h3>Lavado Exterior</h3>
 				<p>Limpieza detallada, lavado de rines y neumáticos, con secado de microfibra para un acabado sin manchas.</p>
-			</a>
-			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+				<div class="service-prices">
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Auto%20Chico%20(%24150)" target="_blank" rel="noopener noreferrer" class="price-badge">🚗 $150</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20SUV%2FMediano%20(%24190)" target="_blank" rel="noopener noreferrer" class="price-badge">🚙 $190</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Pick-up%2FGrande%20(%24240)" target="_blank" rel="noopener noreferrer" class="price-badge">🛻 $240</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Van%2FExtra%20Grande%20(%24280)" target="_blank" rel="noopener noreferrer" class="price-badge">🚐 $280</a>
+				</div>
+			</div>
+			<div class="glass-card service-card">
 				<h3>Lavado Completo</h3>
-				<p>Lavado exterior, aspirado profundo e hidratación de plásticos para un acabado impecable.</p>
-			</a>
-			<a href="https://wa.me/523331992043?text=Me%20interesa%20reservar%20el%20servicio%20de%20Servicio%20Premium" target="_blank" rel="noopener noreferrer" class="glass-card service-link">
+				<p>Lavado exterior y aspirado profundo para un acabado impecable.</p>
+				<div class="service-prices">
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Auto%20Chico%20(%24200)" target="_blank" rel="noopener noreferrer" class="price-badge">🚗 $200</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20SUV%2FMediano%20(%24250)" target="_blank" rel="noopener noreferrer" class="price-badge">🚙 $250</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Pick-up%2FGrande%20(%24290)" target="_blank" rel="noopener noreferrer" class="price-badge">🛻 $290</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Van%2FExtra%20Grande%20(%24340)" target="_blank" rel="noopener noreferrer" class="price-badge">🚐 $340</a>
+				</div>
+			</div>
+			<div class="glass-card service-card">
 				<h3>Servicio Premium</h3>
 				<p>Desmanchado de cristales, limpieza de faros, hidratación de plásticos y acabado con cera protectora para un brillo duradero.</p>
-			</a>
+				<div class="service-quote">
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20cotizar%20el%20Servicio%20Premium" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Cotizar</a>
+				</div>
+			</div>
 			<div class="glass-card club-card">
 				<div class="club-content">
 					<div class="club-badge">Membresía</div>
@@ -128,10 +143,49 @@ import About from '../components/About.astro';
 		font-size: 0.95rem;
 	}
 
-	.service-link {
+	.service-card {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.service-prices {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+		padding-top: 2rem;
+	}
+
+	.price-badge {
+		background: rgba(8, 145, 178, 0.1);
+		color: var(--text);
+		padding: 0.25rem 0.5rem;
+		border-radius: 6px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		border: 1px solid rgba(8, 145, 178, 0.2);
 		text-decoration: none;
-		display: block;
-		cursor: pointer;
+		transition: all 0.3s ease;
+		display: inline-block;
+	}
+
+	.price-badge:hover {
+		background: var(--primary);
+		color: white;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 10px rgba(8, 145, 178, 0.2);
+	}
+
+	.service-quote {
+		margin-top: auto;
+		padding-top: 2rem;
+		display: flex;
+		justify-content: center;
+	}
+
+	.service-quote .btn {
+		width: max-content;
 	}
 
 	.club-card {
