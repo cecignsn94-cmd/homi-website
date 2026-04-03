@@ -133,8 +133,10 @@ const plans = [
                   {plan.prices.map((p) => (
                     <div class="price-row">
                       <span class="price-emoji">{p.emoji} {p.label}</span>
-                      <span class="price-amount">{p.amount}</span>
-                      <span class="price-period">{plan.period}</span>
+                      <div class="price-value-container">
+                        <span class="price-amount">{p.amount}</span>
+                        <span class="price-period">{plan.period}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -353,7 +355,13 @@ const plans = [
     background: rgba(8, 145, 178, 0.05);
     border: 1px solid rgba(8, 145, 178, 0.1);
     border-radius: 12px;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    gap: 0.25rem;
+  }
+
+  .price-value-container {
+    display: flex;
+    align-items: baseline;
     gap: 0.25rem;
   }
 
