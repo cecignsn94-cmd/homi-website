@@ -141,6 +141,7 @@ import About from '../components/About.astro';
 		color: var(--text-muted);
 		line-height: 1.6;
 		font-size: 0.95rem;
+		flex-grow: 1; /* Make descriptions grow to push prices uniformly */
 	}
 
 	.service-card {
@@ -153,8 +154,10 @@ import About from '../components/About.astro';
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		align-items: center;
+		min-height: 50px;
 		margin-top: auto;
-		padding-top: 2rem;
+		padding-top: 1.5rem;
 	}
 
 	.price-badge {
@@ -178,10 +181,12 @@ import About from '../components/About.astro';
 	}
 
 	.service-quote {
-		margin-top: auto;
-		padding-top: 2rem;
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		min-height: 50px;
+		margin-top: auto;
+		padding-top: 1.5rem;
 	}
 
 	.service-quote .btn {
