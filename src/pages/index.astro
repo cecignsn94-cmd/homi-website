@@ -18,20 +18,20 @@ import About from '../components/About.astro';
 				<h3>Lavado Exterior</h3>
 				<p>Limpieza detallada, lavado de rines y neumáticos, con secado de microfibra para un acabado sin manchas.</p>
 				<div class="service-prices">
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Auto%20Chico%20(%24150)" target="_blank" rel="noopener noreferrer" class="price-badge">🚗 Ch $150</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20SUV%2FMediano%20(%24190)" target="_blank" rel="noopener noreferrer" class="price-badge">🚙 Med $190</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Pick-up%2FGrande%20(%24240)" target="_blank" rel="noopener noreferrer" class="price-badge">🛻 Gde $240</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Van%2FExtra%20Grande%20(%24280)" target="_blank" rel="noopener noreferrer" class="price-badge">🚐 ExtGde $280</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Auto%20Chico%20(%24150)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚗 Ch</span> <span>$150</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20SUV%2FMediano%20(%24190)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚙 Med</span> <span>$190</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Pick-up%2FGrande%20(%24240)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🛻 Gde</span> <span>$240</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Exterior%20-%20Van%2FExtra%20Grande%20(%24280)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚐 ExtGde</span> <span>$280</span></a>
 				</div>
 			</div>
 			<div class="glass-card service-card">
 				<h3>Lavado Completo</h3>
 				<p>Lavado exterior y aspirado profundo para un acabado impecable.</p>
 				<div class="service-prices">
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Auto%20Chico%20(%24200)" target="_blank" rel="noopener noreferrer" class="price-badge">🚗 Ch $200</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20SUV%2FMediano%20(%24250)" target="_blank" rel="noopener noreferrer" class="price-badge">🚙 Med $250</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Pick-up%2FGrande%20(%24290)" target="_blank" rel="noopener noreferrer" class="price-badge">🛻 Gde $290</a>
-					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Van%2FExtra%20Grande%20(%24340)" target="_blank" rel="noopener noreferrer" class="price-badge">🚐 ExtGde $340</a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Auto%20Chico%20(%24200)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚗 Ch</span> <span>$200</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20SUV%2FMediano%20(%24250)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚙 Med</span> <span>$250</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Pick-up%2FGrande%20(%24290)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🛻 Gde</span> <span>$290</span></a>
+					<a href="https://wa.me/523319118971?text=Me%20interesa%20reservar%20el%20servicio%20de%20Lavado%20Completo%20-%20Van%2FExtra%20Grande%20(%24340)" target="_blank" rel="noopener noreferrer" class="price-badge"><span>🚐 ExtGde</span> <span>$340</span></a>
 				</div>
 			</div>
 			<div class="glass-card service-card">
@@ -162,17 +162,18 @@ import About from '../components/About.astro';
 
 	.price-badge {
 		flex: 1 1 calc(50% - 0.5rem);
-		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		background: transparent;
 		color: var(--text);
-		padding: 0.5rem;
+		padding: 0.5rem 0.75rem;
 		border-radius: 9999px;
 		font-size: 0.9rem;
 		font-weight: 600;
 		border: 1px solid var(--primary);
 		text-decoration: none;
 		transition: all 0.3s ease;
-		display: inline-block;
 	}
 
 	.price-badge:hover {
