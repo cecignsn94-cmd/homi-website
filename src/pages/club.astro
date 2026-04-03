@@ -1,29 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const benefits = [
   {
     title: "Mantenimiento Continuo",
-    description: "Visitas programadas cada semana para que tu coche nunca pierda su brillo.",
-    icon: "🗓️"
+    description:
+      "Visitas programadas cada semana para que tu coche nunca pierda su brillo.",
+    icon: "🗓️",
   },
   {
     title: "Prioridad VIP",
-    description: "Acceso exclusivo a horarios premium y atención prioritaria vía WhatsApp.",
-    icon: "⭐"
+    description:
+      "Acceso exclusivo a horarios premium y atención prioritaria vía WhatsApp.",
+    icon: "⭐",
   },
   {
     title: "Precio preferencial",
-    description: "Ahorra hasta un 10% comparado con servicios individuales contratados por separado.",
-    icon: "💰"
+    description:
+      "Ahorra hasta un 10% comparado con servicios individuales contratados por separado.",
+    icon: "💰",
   },
   {
     title: "Tratamientos Premium",
-    description: "Incluye hidratación de plásticos y encerado rápido en cada visita del club.",
-    icon: "✨"
-  }
+    description:
+      "Incluye hidratación de plásticos y encerado rápido en cada visita del club.",
+    icon: "✨",
+  },
 ];
 
 const plans = [
@@ -31,108 +35,164 @@ const plans = [
     name: "Homi Basic",
     prices: [
       { label: "Coche", amount: "$540", emoji: "🚗" },
-      { label: "Camioneta", amount: "$650", emoji: "🚙" }
+      { label: "Camioneta", amount: "$650", emoji: "🚙" },
     ],
     period: "/mes",
     description: "Ideal para mantener el exterior impecable.",
-    features: ["4 Lavados Exteriores (1 por semana)", "Limpieza de rines", "Secado premium", "Atención prioritaria"],
-    popular: false
+    features: [
+      "4 Lavados Exteriores (1 por semana)",
+      "Limpieza de rines",
+      "Secado premium",
+      "Atención prioritaria",
+    ],
+    popular: false,
   },
   {
     name: "Homi Pro",
     prices: [
       { label: "Coche", amount: "$650", emoji: "🚗" },
-      { label: "Camioneta", amount: "$720", emoji: "🚙" }
+      { label: "Camioneta", amount: "$720", emoji: "🚙" },
     ],
     period: "/mes",
     description: "Nuestro plan más balanceado y popular.",
-    features: ["4 Lavados Completos (1 por semana)", "Aspirado profundo", "Hidratación de plásticos", "1 Encerado líquido"],
-    popular: true
+    features: [
+      "4 Lavados Completos (1 por semana)",
+      "Aspirado profundo",
+      "Hidratación de plásticos",
+      "1 Encerado líquido",
+    ],
+    popular: true,
   },
   {
     name: "Homi Elite",
     prices: [
       { label: "Coche", amount: "$4,320", emoji: "🚗" },
-      { label: "Camioneta", amount: "$5,400", emoji: "🚙" }
+      { label: "Camioneta", amount: "$5,400", emoji: "🚙" },
     ],
     period: "/ 6 meses",
     description: "Para los amantes de la perfección total.",
-    features: ["1 Servicio Premium al mes", "Membresía por 6 meses", "Desmanchado de cristales", "Limpieza de faros", "Hidratación de plásticos", "Cera protectora"],
-    popular: false
-  }
+    features: [
+      "1 Servicio Premium al mes",
+      "Membresía por 6 meses",
+      "Desmanchado de cristales",
+      "Limpieza de faros",
+      "Hidratación de plásticos",
+      "Cera protectora",
+    ],
+    popular: false,
+  },
 ];
 ---
 
 <Layout title="Homi Club | Membresía Exclusiva de Lavado">
-	<Navbar />
-	<main>
-		<section class="club-hero">
+  <Navbar />
+  <main>
+    <section class="club-hero">
       <div class="container hero-content animate-fade-in">
         <div class="club-badge-large">Membresía Exclusiva</div>
         <h1>Únete a <span class="text-gradient">Homi Club</span></h1>
-        <p>La forma más inteligente de mantener el valor y la estética de tu vehículo sin mover un solo dedo.</p>
+        <p>
+          La forma más inteligente de mantener el valor y la estética de tu
+          vehículo sin mover un solo dedo.
+        </p>
       </div>
     </section>
 
     <section class="benefits container">
       <div class="benefits-grid">
-        {benefits.map(benefit => (
-          <div class="glass-card benefit-item">
-            <span class="benefit-icon">{benefit.icon}</span>
-            <h3>{benefit.title}</h3>
-            <p>{benefit.description}</p>
-          </div>
-        ))}
+        {
+          benefits.map((benefit) => (
+            <div class="glass-card benefit-item">
+              <span class="benefit-icon">{benefit.icon}</span>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.description}</p>
+            </div>
+          ))
+        }
       </div>
     </section>
 
     <section class="pricing container">
-       <div class="pricing-header">
+      <div class="pricing-header">
         <h2 class="section-title">Nuestros Planes</h2>
         <p>Elige el plan que mejor se adapte a tus necesidades de cuidado.</p>
       </div>
       <div class="pricing-grid">
-        {plans.map(plan => (
-          <div class={`glass-card plan-card ${plan.popular ? 'popular' : ''}`}>
-            {plan.popular && <div class="most-popular">Más Recomendado</div>}
-            <div class="plan-header">
-              <h3>{plan.name}</h3>
-              <div class="prices-container">
-                {plan.prices.map(p => (
-                  <div class="price-row">
-                    <span class="price-emoji">{p.emoji}</span>
-                    <span class="price-amount">{p.amount}</span>
-                    <span class="price-period">{plan.period}</span>
-                  </div>
-                ))}
+        {
+          plans.map((plan) => (
+            <div
+              class={`glass-card plan-card ${plan.popular ? "popular" : ""}`}
+            >
+              {plan.popular && <div class="most-popular">Más Recomendado</div>}
+              <div class="plan-header">
+                <h3>{plan.name}</h3>
+                <div class="prices-container">
+                  {plan.prices.map((p) => (
+                    <div class="price-row">
+                      <span class="price-emoji">{p.emoji}</span>
+                      <span class="price-amount">{p.amount}</span>
+                      <span class="price-period">{plan.period}</span>
+                    </div>
+                  ))}
+                </div>
+                <p>{plan.description}</p>
               </div>
-              <p>{plan.description}</p>
+              <ul class="plan-features">
+                {plan.features.map((feature) => (
+                  <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="check-icon"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`https://wa.me/523331992043?text=Me%20interesa%20unirme%20al%20Homi%20Club%20con%20el%20plan%20${encodeURIComponent(
+                  plan.name
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`btn ${
+                  plan.popular ? "btn-primary" : "btn-secondary-outline"
+                }`}
+              >
+                Elegir Plan
+              </a>
             </div>
-            <ul class="plan-features">
-              {plan.features.map(feature => (
-                <li>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"/></svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <a href={`https://wa.me/523331992043?text=Me%20interesa%20unirme%20al%20Homi%20Club%20con%20el%20plan%20${encodeURIComponent(plan.name)}`} target="_blank" rel="noopener noreferrer" class={`btn ${plan.popular ? 'btn-primary' : 'btn-secondary-outline'}`}>
-              Elegir Plan
-            </a>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </section>
 
     <section class="cta-bottom container">
       <div class="glass-card cta-box">
         <h2>¿Tienes más de un vehículo?</h2>
-        <p>Ofrecemos descuentos especiales para flotillas familiares o empresas. Consúltanos por WhatsApp.</p>
-        <a href="https://wa.me/523331992043?text=Me%20interesa%20un%20plan%20para%20varios%20veh%C3%ADculos" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Hablar con un asesor</a>
+        <p>
+          Ofrecemos descuentos especiales para flotillas familiares o empresas.
+          Consúltanos por WhatsApp.
+        </p>
+        <a
+          href="https://wa.me/523331992043?text=Me%20interesa%20un%20plan%20para%20varios%20veh%C3%ADculos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary">Hablar con un asesor</a
+        >
       </div>
     </section>
-	</main>
-	<Footer />
+  </main>
+  <Footer />
 </Layout>
 
 <style>
@@ -186,9 +246,12 @@ const plans = [
   }
 
   .benefit-item {
-    text-align: left;
+    text-align: center;
     transition: all 0.3s ease;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .benefit-icon {
@@ -207,7 +270,8 @@ const plans = [
     padding: 6rem 1.5rem;
     background: rgba(8, 145, 178, 0.02);
     border-radius: clamp(30px, 10vw, 60px);
-    margin: 0 1rem;
+    max-width: 1216px;
+    margin: 0 auto;
   }
 
   .pricing-header {
@@ -224,7 +288,7 @@ const plans = [
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
     align-items: stretch;
   }
@@ -301,8 +365,12 @@ const plans = [
 
   .plan-features {
     list-style: none;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem auto;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
   }
 
   .plan-features li {
@@ -329,7 +397,11 @@ const plans = [
   .cta-box {
     text-align: center;
     padding: 4rem 1.5rem;
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(8, 145, 178, 0.05) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
   }
 
   .cta-box h2 {
@@ -369,7 +441,7 @@ const plans = [
       grid-template-columns: 1fr;
       gap: 3rem;
     }
-    
+
     .plan-card.popular {
       transform: none;
     }
@@ -382,7 +454,6 @@ const plans = [
   @media (max-width: 480px) {
     .pricing {
       padding: 3rem 1rem;
-      margin: 0 0.5rem;
     }
     .plan-header h3 {
       font-size: 1.5rem;
