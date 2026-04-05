@@ -26,23 +26,6 @@ const benefits = [
 
 const plans = [
   {
-    name: "Homi Basic",
-    prices: [
-      { label: "Ch", amount: "$480", emoji: "🚗" },
-      { label: "Med", amount: "$600", emoji: "🚙" },
-      { label: "Gde", amount: "$760", emoji: "🛻" },
-      { label: "ExtGde", amount: "$880", emoji: "🚐" },
-    ],
-    period: "/mes",
-    description: "Ideal para mantener el exterior impecable.",
-    features: [
-      "4 Lavados Exteriores (1 por semana)",
-      "Limpieza de rines",
-      "Atención prioritaria",
-    ],
-    popular: false,
-  },
-  {
     name: "Homi Pro",
     prices: [
       { label: "Ch", amount: "$640", emoji: "🚗" },
@@ -59,6 +42,23 @@ const plans = [
       "Atención prioritaria",
     ],
     popular: true,
+  },
+  {
+    name: "Homi Basic",
+    prices: [
+      { label: "Ch", amount: "$480", emoji: "🚗" },
+      { label: "Med", amount: "$600", emoji: "🚙" },
+      { label: "Gde", amount: "$760", emoji: "🛻" },
+      { label: "ExtGde", amount: "$880", emoji: "🚐" },
+    ],
+    period: "/mes",
+    description: "Ideal para mantener el exterior impecable.",
+    features: [
+      "4 Lavados Exteriores (1 por semana)",
+      "Limpieza de rines",
+      "Atención prioritaria",
+    ],
+    popular: false,
   },
   {
     name: "Homi Mixto",
@@ -100,8 +100,12 @@ const plans = [
         <h2 class="section-title">Nuestros Planes</h2>
         <p>Elige el plan que mejor se adapte a tus necesidades de cuidado.</p>
       </div>
-      <div class="pricing-grid">
-        {
+      <div class="carousel-wrapper">
+        <button class="carousel-arrow prev-arrow" aria-label="Anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="pricing-grid" id="pricingGrid">
+          {
           plans.map((plan) => (
             <div
               class={`glass-card plan-card ${plan.popular ? "popular" : ""}`}
@@ -160,6 +164,10 @@ const plans = [
             </div>
           ))
         }
+        </div>
+        <button class="carousel-arrow next-arrow" aria-label="Siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
     </section>
 
@@ -196,6 +204,46 @@ const plans = [
   </main>
   <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('pricingGrid');
+    const prevBtn = document.querySelector('.prev-arrow') as HTMLButtonElement | null;
+    const nextBtn = document.querySelector('.next-arrow') as HTMLButtonElement | null;
+
+    if (grid && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: -window.innerWidth * 0.8, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: window.innerWidth * 0.8, behavior: 'smooth' });
+      });
+      
+      const updateButtons = () => {
+        if (grid.scrollLeft <= 5) {
+          prevBtn.style.opacity = '0.3';
+          prevBtn.style.pointerEvents = 'none';
+        } else {
+          prevBtn.style.opacity = '1';
+          prevBtn.style.pointerEvents = 'auto';
+        }
+        
+        if (grid.scrollLeft >= (grid.scrollWidth - grid.clientWidth - 5)) {
+          nextBtn.style.opacity = '0.3';
+          nextBtn.style.pointerEvents = 'none';
+        } else {
+          nextBtn.style.opacity = '1';
+          nextBtn.style.pointerEvents = 'auto';
+        }
+      };
+      
+      grid.addEventListener('scroll', updateButtons);
+      window.addEventListener('resize', updateButtons);
+      setTimeout(updateButtons, 100);
+    }
+  });
+</script>
 
 <style>
   main {
@@ -467,18 +515,68 @@ const plans = [
     width: 100%;
   }
 
+  .carousel-wrapper {
+    position: relative;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+
   @media (max-width: 768px) {
-    .pricing-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    .carousel-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .prev-arrow {
+      left: -0.5rem;
+    }
+    .next-arrow {
+      right: -0.5rem;
     }
 
-    .plan-card.popular {
-      transform: none;
+    .pricing-grid {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding: 1rem 1.5rem 3rem 1.5rem;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      -webkit-overflow-scrolling: touch;
+      scroll-padding-left: 1.5rem;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .pricing-grid::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
     }
 
     .plan-card {
       padding: 2.5rem 1.5rem;
+      flex: 0 0 85%;
+      min-width: 85%;
+      max-width: 85%;
+      scroll-snap-align: center;
+    }
+
+    .plan-card.popular {
+      transform: none;
     }
   }
 
